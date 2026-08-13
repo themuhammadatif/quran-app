@@ -1,0 +1,76 @@
+    import React from 'react';
+    import './Audioplayer.css';
+    import { useRef, useState } from 'react';
+
+    const Audioplayer = ({ number, name, arabicname }) => {
+
+    const audioRef = useRef(null)
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [progress, setProgress] = useState(0)
+        const [time, setTime] = useState(0)
+const [duration, setDuration] = useState("00:00")
+
+
+
+    const audioUrl = `https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/${number}.mp3`;
+
+        const handlePlay = () => {
+            if (isPlaying) {
+                audioRef.current.pause();
+                setIsPlaying(false);
+            } else {
+                audioRef.current.play();
+                setIsPlaying(true);
+            }
+        };
+
+
+
+
+        return (
+            <div className="audio-player">
+                <div className="player-info">
+                    <div className="audio-number">{number}</div>
+
+                    <div>
+                        <h2>{name}</h2>
+                        <p>{arabicname}</p>
+                    </div>
+                </div>
+
+                <audio ref={audioRef} controls src={audioUrl} onPlay={() => setIsPlaying(true)}
+                    onPause={() => setIsPlaying(false)}
+
+                    onTimeUpdate={(e) => {
+                        const current = e.target.currentTime;
+
+                        setTime(current);
+
+                        const percent =
+                            (current / e.target.duration) * 100;
+
+                        setProgress(percent);
+                    }}
+                        
+
+
+
+
+                       style={{display:"none"}}
+                    ></audio>
+
+                <div className="player-controls">
+                    <button onClick={handlePlay}>{isPlaying ? "⏸" : "▶"}</button>
+
+            
+                    <div className="progress">
+                        <div className="progress-bar" style={{width:`${progress}%`}}></div>
+                    </div>
+
+                    <span>{Math.floor(time)}</span>
+                </div>
+            </div>
+        );
+    };
+
+    export default Audioplayer;

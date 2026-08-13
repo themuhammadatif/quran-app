@@ -9,6 +9,7 @@ const Surah = () => {
 
 
   const[surahs,setSurahs] = useState([])
+  const [search, setSearch] = useState("")
 
   useEffect(()=>{
     fetch("https://api.alquran.cloud/v1/surah")
@@ -19,9 +20,13 @@ const Surah = () => {
 
     
 
-
-
   },[])
+
+  const filteredSurahs = surahs.filter((surah) =>
+    surah.englishName.toLowerCase().includes(search.toLowerCase()) ||
+    surah.name.includes(search) ||
+    surah.number.toString().includes(search)
+  );
 
 
   return (
@@ -42,6 +47,8 @@ const Surah = () => {
           <input
             type="text"
             placeholder="Search by name, meaning or number..."
+            value={search}
+            onChange={(e)=> setSearch(e.target.value)}
           />
         </div>
       </section>
@@ -49,7 +56,7 @@ const Surah = () => {
 
 
       <div className="surah-grid">
-        {surahs.map((surah) => (
+        {filteredSurahs.map((surah) => (
           <Surahcard
             key={surah.number}
             number={surah.number}
