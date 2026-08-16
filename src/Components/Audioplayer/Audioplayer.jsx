@@ -52,7 +52,9 @@ const [duration, setDuration] = useState("00:00")
                         setProgress(percent);
                     }}
                         
-
+                onLoadedMetadata={(e) => {
+                    setDuration(e.target.duration);
+                }}
 
 
 
@@ -67,7 +69,7 @@ const [duration, setDuration] = useState("00:00")
                         <div className="progress-bar" style={{width:`${progress}%`}}></div>
                     </div>
 
-                    <span>{Math.floor(time)}</span>
+                    <span>{Math.floor(time)} / {Math.floor(duration)}s </span>
                 </div>
             </div>
         );

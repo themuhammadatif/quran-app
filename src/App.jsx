@@ -6,13 +6,19 @@ import Audio from './Pages/Audio/Audio'
 import Surah from './Pages/Surah/Surah'
 import Navbar from './Components/Navbar/Navbar'
 import Surahdetail from './Pages/Surahdetail/Surahdetail.jsx'
+import Audioplayer from './Components/Audioplayer/Audioplayer.jsx'
+
 
 
 const App = () => {
   return (
     <>
     <Navbar/>
+
+
+
     <Routes>
+      
       <Route path="/" element={<Home/>} />
       <Route path="/audio" element={<Audio/>} />
       <Route path="/surah" element={<Surah/>} />
