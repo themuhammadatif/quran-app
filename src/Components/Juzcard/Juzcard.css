@@ -1,0 +1,91 @@
+.juz-card {
+    width: 100%;
+    max-width: 350px;
+    min-height: 120px;
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    padding: 20px;
+
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.juz-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Juz Number */
+
+.juz-number {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #f1f8f5;
+    color: #16805c;
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Information */
+
+.juz-info {
+    flex: 1;
+}
+
+.juz-info h3 {
+    margin: 0 0 6px;
+    font-size: 19px;
+    color: #222;
+}
+
+.juz-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #888;
+}
+
+/* Arrow */
+
+.juz-arrow {
+    font-size: 24px;
+    color: #16805c;
+}
+
+
+/* Responsive */
+
+@media (max-width: 600px) {
+
+    .juz-card {
+        max-width: 100%;
+        min-height: 100px;
+        padding: 15px;
+    }
+
+    .juz-number {
+        width: 48px;
+        height: 48px;
+        font-size: 16px;
+    }
+
+    .juz-info h3 {
+        font-size: 17px;
+    }
+
+}
